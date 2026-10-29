@@ -1,12 +1,18 @@
 import type { Metadata } from "next"
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
-import { MatchRow, type MatchRowData } from "@/components/match/match-row"
+import { MatchRow, type MatchRowData, type RowTag } from "@/components/match/match-row"
 import { FormAlert } from "@/components/ui/form-alert"
 
 export const metadata: Metadata = { title: "Minhas peladas" }
 
-const MATCH_FIELDS = "code, title, starts_at, duration_minutes, venue_name, neighborhood, status"
+const ROLE_TAG: Record<"confirmado" | "espera" | "organizo", RowTag> = {
+  confirmado: { label: "Tô dentro", tone: "stamp" },
+  espera: { label: "Na espera", tone: "outline" },
+  organizo: { label: "Organizo", tone: "ink" },
+}
+
+const MATCH_FIELDS ="code, title, starts_at, duration_minutes, venue_name, neighborhood, status"
 
 export default async function MyMatchesPage({ searchParams }: PageProps<"/minhas-peladas">) {
   const { senha } = await searchParams
@@ -51,7 +57,7 @@ export default async function MyMatchesPage({ searchParams }: PageProps<"/minhas
           <span className="typed text-base tracking-normal">{upcoming.length}</span>
         </h2>
         {upcoming.length ? (
-          upcoming.map(({ match, role }) => <MatchRow key={match.code} match={match} role={role} />)
+          upcoming.map(({ match, role }) => <MatchRow key={match.code} match={match} tag={ROLE_TAG[role]} />)
         ) : (
           <p className="py-6 text-muted">Nenhuma pelada marcada por enquanto.</p>
         )}

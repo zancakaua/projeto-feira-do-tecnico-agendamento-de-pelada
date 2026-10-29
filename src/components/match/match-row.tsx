@@ -10,18 +10,19 @@ export type MatchRowData = {
   status: "aberta" | "cancelada"
 }
 
-type Role = "confirmado" | "espera" | "organizo"
+export type RowTag = { label: string; tone: "stamp" | "ink" | "outline" }
 
-const ROLE_LABEL: Record<Role, string> = {
-  confirmado: "Tô dentro",
-  espera: "Na espera",
-  organizo: "Organizo",
+const TONE: Record<RowTag["tone"], string> = {
+  stamp: "border-stamp bg-stamp text-white",
+  ink: "border-ink bg-ink text-paper",
+  outline: "border-ink text-ink",
 }
 
-// Linha da súmula: bloco de data datilografado + o quê/onde + carimbo de situação
-export function MatchRow({ match, role }: { match: MatchRowData; role: Role }) {
+// Linha da súmula: bloco de data datilografado + o quê/onde + etiqueta de situação
+export function MatchRow({ match, tag }: { match: MatchRowData; tag: RowTag }) {
   const when = matchWhen(match.starts_at, match.duration_minutes)
   const cancelled = match.status === "cancelada"
+  const shown = cancelled ? { label: "Cancelada", tone: "outline" as const } : tag
   return (
     <article className="grid grid-cols-[4.25rem_1fr] border-b border-rule py-3 last:border-b-0">
       <div className="border-r border-ink pr-3 text-center">
@@ -36,14 +37,10 @@ export function MatchRow({ match, role }: { match: MatchRowData; role: Role }) {
           </h3>
           <span
             className={`shrink-0 border px-1.5 py-0.5 font-label text-[0.7rem] font-bold tracking-[0.1em] uppercase ${
-              cancelled
-                ? "border-stamp text-stamp"
-                : role === "confirmado"
-                  ? "border-stamp bg-stamp text-white"
-                  : "border-ink text-ink"
+              cancelled ? "border-stamp text-stamp" : TONE[shown.tone]
             }`}
           >
-            {cancelled ? "Cancelada" : ROLE_LABEL[role]}
+            {shown.label}
           </span>
         </div>
         <p className="mt-0.5 text-[0.95rem]">

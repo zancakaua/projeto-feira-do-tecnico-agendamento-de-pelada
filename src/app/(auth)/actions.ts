@@ -47,12 +47,12 @@ export async function signUpAction(input: SignUpInput): Promise<ActionResult> {
     password: parsed.data.password,
     options: {
       data: { full_name: parsed.data.fullName },
-      emailRedirectTo: callbackUrl(await siteOrigin(), "/minhas-peladas"),
+      emailRedirectTo: callbackUrl(await siteOrigin(), "/perfil/editar?novo=1"),
     },
   })
   if (error) return { error: authErrorMessage(error.code) }
   // Com confirmação de e-mail ligada, a sessão só vem depois do link
-  if (data.session) redirect("/minhas-peladas")
+  if (data.session) redirect("/perfil/editar?novo=1")
   return { ok: `Mandamos um link pra ${parsed.data.email}. Abre ele pra ativar sua conta.` }
 }
 
