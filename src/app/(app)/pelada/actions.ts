@@ -152,6 +152,15 @@ export async function removePlayerAction(code: string, userId: string): Promise<
   return {}
 }
 
+export async function saveTeamsAction(code: string, assign: { user_id: string; team: number }[]): Promise<MatchResult> {
+  const { supabase, id } = await matchIdFor(code)
+  if (!id) return { error: "Pelada não encontrada." }
+  const { error } = await supabase.rpc("save_teams", { p_match: id, p_assign: assign })
+  if (error) return { error: dbMessage(error) }
+  revalidatePath(`/pelada/${code}`)
+  return {}
+}
+
 export async function cancelMatchAction(code: string, reason: string): Promise<MatchResult> {
   const { supabase } = await requireUser(`/pelada/${code}`)
   const { data: match } = await supabase.from("matches").select("id").eq("code", code).maybeSingle()

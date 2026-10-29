@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   title: { default: "Racha", template: "%s · Racha" },
   description: "A lista da pelada que se organiza sozinha: vagas, lista de espera, Pix e times.",
   applicationName: "Racha",
+  icons: { icon: "/icons/192", apple: "/icons/180" },
+  appleWebApp: { capable: true, title: "Racha", statusBarStyle: "black" },
 }
 
 export const viewport: Viewport = {

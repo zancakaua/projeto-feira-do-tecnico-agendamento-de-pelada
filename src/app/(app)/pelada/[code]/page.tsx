@@ -4,6 +4,11 @@ import { Copy, Pencil } from "lucide-react"
 import { createClient } from "@/lib/supabase/server"
 import { getMatchView, getRoster, matchPhase, type MatchView } from "@/lib/match-view"
 import { leaveDeadline } from "@/lib/roster"
+import { shareText, whatsappShareUrl } from "@/lib/share"
+import { headers } from "next/headers"
+import { Send } from "lucide-react"
+import { Teams } from "@/components/match/teams"
+import { buttonClass } from "@/components/ui/button"
 import { Roster } from "@/components/match/roster"
 import { JoinBar } from "@/components/match/join-bar"
 import { matchWhen } from "@/lib/dates"
@@ -46,6 +51,8 @@ export default async function MatchPage({ params, searchParams }: PageProps<"/pe
   const waitPosition = roster.filter((p) => p.status === "espera").findIndex((p) => p.is_me) + 1 || null
   const deadline = leaveDeadline(match.starts_at, match.leave_deadline_hours)
   const justJoined = entrou === "confirmado" || entrou === "espera"
+  const h = await headers()
+  const origin = process.env.NEXT_PUBLIC_SITE_URL ?? `${h.get("x-forwarded-proto") ?? "https"}://${h.get("host")}`
 
   return (
     <>
@@ -82,12 +89,26 @@ export default async function MatchPage({ params, searchParams }: PageProps<"/pe
         </div>
       ) : null}
 
+      {match.status === "aberta" ? (
+        <a
+          href={whatsappShareUrl(shareText(view, roster, `${origin}/pelada/${code}`))}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonClass("outline", "mt-6 w-full sm:w-auto")}
+        >
+          <Send aria-hidden className="size-5" />
+          Mandar no grupo do zap
+        </a>
+      ) : null}
+
       <Roster
         roster={roster}
         fieldSlots={match.field_slots}
         goalkeeperSlots={match.goalkeeper_slots}
         ctx={{ code, isOrganizer: view.is_organizer, justJoined, editable: match.status === "aberta" }}
       />
+
+      {match.status === "aberta" ? <Teams code={code} roster={roster} canDraw={view.is_organizer} /> : null}
 
       {match.rules ? (
         <section className="mt-8">
