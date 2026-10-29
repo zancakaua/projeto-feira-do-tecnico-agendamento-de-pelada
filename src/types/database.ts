@@ -257,6 +257,37 @@ export type Database = {
     Functions: {
       cancel_match: { Args: { p_match: string; p_reason?: string }; Returns: undefined }
       get_match: { Args: { p_code: string }; Returns: Json }
+      explore_matches: {
+        Args: {
+          p_city: string
+          p_from: string
+          p_to?: string
+          p_neighborhood?: string
+          p_courts?: E["court_type"][]
+          p_level?: E["skill_level"]
+          p_max_price?: number
+          p_need_goalkeeper?: boolean
+          p_q?: string
+          p_limit?: number
+        }
+        Returns: {
+          code: string
+          title: string
+          court_type: E["court_type"]
+          venue_name: string
+          neighborhood: string
+          city: string
+          starts_at: string
+          duration_minutes: number
+          field_slots: number
+          goalkeeper_slots: number
+          price_cents: number
+          level: E["skill_level"] | null
+          linha: number
+          goleiro: number
+          espera: number
+        }[]
+      }
       join_match: { Args: { p_code: string; p_slot?: E["slot_kind"] }; Returns: E["participant_status"] }
       leave_match: { Args: { p_code: string }; Returns: undefined }
       remove_participant: { Args: { p_match: string; p_user: string }; Returns: undefined }
