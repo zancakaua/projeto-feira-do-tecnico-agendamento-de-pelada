@@ -15,9 +15,14 @@ export function ChoiceGroup({
   options: Option[]
   registration: UseFormRegisterReturn
   error?: string
-  columns?: 2 | 3 | 5
+  columns?: 2 | 3 | 4 | 5
 }) {
-  const cols = { 2: "grid-cols-2", 3: "grid-cols-3", 5: "grid-cols-2 sm:grid-cols-5" }[columns]
+  const cols = {
+    2: "grid-cols-2",
+    3: "grid-cols-3",
+    4: "grid-cols-2 sm:grid-cols-4",
+    5: "grid-cols-2 sm:grid-cols-5",
+  }[columns]
   return (
     <fieldset aria-invalid={error ? true : undefined}>
       <legend className="label-caps mb-1.5 text-muted">{legend}</legend>

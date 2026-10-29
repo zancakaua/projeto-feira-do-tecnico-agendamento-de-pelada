@@ -3,6 +3,8 @@ import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { MatchRow, type MatchRowData, type RowTag } from "@/components/match/match-row"
 import { FormAlert } from "@/components/ui/form-alert"
+import { ButtonLink } from "@/components/ui/button"
+import { Plus } from "lucide-react"
 
 export const metadata: Metadata = { title: "Minhas peladas" }
 
@@ -44,7 +46,17 @@ export default async function MyMatchesPage({ searchParams }: PageProps<"/minhas
 
   return (
     <>
-      <h1 className="font-label text-3xl leading-none font-bold">Fala, {profile?.nickname ?? "craque"}</h1>
+      <div className="flex items-end justify-between gap-4">
+        <h1 className="font-label text-3xl leading-none font-bold">Fala, {profile?.nickname ?? "craque"}</h1>
+        <ButtonLink href="/pelada/nova" className="hidden sm:inline-flex">
+          <Plus aria-hidden className="size-5" />
+          Nova pelada
+        </ButtonLink>
+      </div>
+      <ButtonLink href="/pelada/nova" className="mt-5 w-full sm:hidden">
+        <Plus aria-hidden className="size-5" />
+        Nova pelada
+      </ButtonLink>
       {senha ? (
         <div className="mt-4">
           <FormAlert tone="ok">Senha trocada. Tá tudo certo.</FormAlert>

@@ -256,6 +256,7 @@ export type Database = {
     Views: { [_ in never]: never }
     Functions: {
       cancel_match: { Args: { p_match: string; p_reason?: string }; Returns: undefined }
+      get_match: { Args: { p_code: string }; Returns: Json }
       join_match: { Args: { p_code: string; p_slot?: E["slot_kind"] }; Returns: E["participant_status"] }
       leave_match: { Args: { p_code: string }; Returns: undefined }
       remove_participant: { Args: { p_match: string; p_user: string }; Returns: undefined }

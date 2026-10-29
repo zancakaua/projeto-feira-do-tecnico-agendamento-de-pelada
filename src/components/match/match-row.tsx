@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { matchWhen, relativeDay } from "@/lib/dates"
 
 export type MatchRowData = {
@@ -24,7 +25,7 @@ export function MatchRow({ match, tag }: { match: MatchRowData; tag: RowTag }) {
   const cancelled = match.status === "cancelada"
   const shown = cancelled ? { label: "Cancelada", tone: "outline" as const } : tag
   return (
-    <article className="grid grid-cols-[4.25rem_1fr] border-b border-rule py-3 last:border-b-0">
+    <article className="relative grid grid-cols-[4.25rem_1fr] border-b border-rule py-3 last:border-b-0 has-[a:hover]:bg-paper-deep">
       <div className="border-r border-ink pr-3 text-center">
         <p className="label-caps text-muted">{when.weekday}</p>
         <p className="typed text-[2.1rem] leading-none">{when.day}</p>
@@ -33,7 +34,9 @@ export function MatchRow({ match, tag }: { match: MatchRowData; tag: RowTag }) {
       <div className="min-w-0 pl-3">
         <div className="flex items-start justify-between gap-2">
           <h3 className={`font-label text-lg leading-tight font-bold ${cancelled ? "text-muted line-through" : ""}`}>
-            {match.title}
+            <Link href={`/pelada/${match.code}`} className="no-underline after:absolute after:inset-0 hover:underline">
+              {match.title}
+            </Link>
           </h3>
           <span
             className={`shrink-0 border px-1.5 py-0.5 font-label text-[0.7rem] font-bold tracking-[0.1em] uppercase ${
