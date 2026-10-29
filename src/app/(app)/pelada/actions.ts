@@ -105,6 +105,53 @@ export async function updateMatchAction(code: string, input: MatchFormInput): Pr
   redirect(`/pelada/${code}?salva=1`)
 }
 
+// As regras (vaga, fila, prazo, permissão) vivem no banco; as mensagens de erro de lá já vêm em português
+function dbMessage(error: { code?: string; message: string }) {
+  return ["P0001", "P0002", "42501", "28000"].includes(error.code ?? "") ? error.message : GENERIC
+}
+
+export async function joinMatchAction(code: string, slot: "linha" | "goleiro"): Promise<MatchResult> {
+  const { supabase } = await requireUser(`/pelada/${code}`)
+  const { data, error } = await supabase.rpc("join_match", { p_code: code, p_slot: slot })
+  if (error) return { error: dbMessage(error) }
+  revalidatePath(`/pelada/${code}`)
+  revalidatePath("/minhas-peladas")
+  redirect(`/pelada/${code}?entrou=${data}`)
+}
+
+export async function leaveMatchAction(code: string): Promise<MatchResult> {
+  const { supabase } = await requireUser(`/pelada/${code}`)
+  const { error } = await supabase.rpc("leave_match", { p_code: code })
+  if (error) return { error: dbMessage(error) }
+  revalidatePath(`/pelada/${code}`)
+  revalidatePath("/minhas-peladas")
+  return {}
+}
+
+async function matchIdFor(code: string) {
+  const supabase = await createClient()
+  const { data } = await supabase.from("matches").select("id").eq("code", code).maybeSingle()
+  return { supabase, id: data?.id ?? null }
+}
+
+export async function setPaidAction(code: string, userId: string, paid: boolean): Promise<MatchResult> {
+  const { supabase, id } = await matchIdFor(code)
+  if (!id) return { error: "Pelada não encontrada." }
+  const { error } = await supabase.rpc("set_paid", { p_match: id, p_user: userId, p_paid: paid })
+  if (error) return { error: dbMessage(error) }
+  revalidatePath(`/pelada/${code}`)
+  return {}
+}
+
+export async function removePlayerAction(code: string, userId: string): Promise<MatchResult> {
+  const { supabase, id } = await matchIdFor(code)
+  if (!id) return { error: "Pelada não encontrada." }
+  const { error } = await supabase.rpc("remove_participant", { p_match: id, p_user: userId })
+  if (error) return { error: dbMessage(error) }
+  revalidatePath(`/pelada/${code}`)
+  return {}
+}
+
 export async function cancelMatchAction(code: string, reason: string): Promise<MatchResult> {
   const { supabase } = await requireUser(`/pelada/${code}`)
   const { data: match } = await supabase.from("matches").select("id").eq("code", code).maybeSingle()

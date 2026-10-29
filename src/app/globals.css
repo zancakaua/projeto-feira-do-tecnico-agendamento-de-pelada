@@ -108,6 +108,19 @@
     }
   }
   .stamp-in {
-    animation: stamp-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: stamp-in 380ms cubic-bezier(0.16, 1, 0.3, 1) 700ms both;
+  }
+
+  /* Assinatura: o nome é "datilografado" na linha da súmula */
+  @keyframes type-in {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  .type-in {
+    animation: type-in 650ms steps(22, end) both;
   }
 }

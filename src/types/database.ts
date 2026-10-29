@@ -257,6 +257,7 @@ export type Database = {
     Functions: {
       cancel_match: { Args: { p_match: string; p_reason?: string }; Returns: undefined }
       get_match: { Args: { p_code: string }; Returns: Json }
+      get_roster: { Args: { p_code: string }; Returns: Json }
       explore_matches: {
         Args: {
           p_city: string

@@ -16,6 +16,26 @@ export async function getMatchView(supabase: SupabaseClient<Database>, code: str
   return (data as MatchView | null) ?? null
 }
 
+export type RosterEntry = {
+  user_id: string
+  nickname: string
+  full_name: string
+  avatar_url: string | null
+  position: Enums<"position_pref">
+  level: Enums<"skill_level">
+  slot: Enums<"slot_kind">
+  status: "confirmado" | "espera"
+  team: number | null
+  is_me: boolean
+  paid: boolean | null // só para quem organiza e para a própria pessoa
+  phone: string | null // só para quem organiza
+}
+
+export async function getRoster(supabase: SupabaseClient<Database>, code: string) {
+  const { data } = await supabase.rpc("get_roster", { p_code: code })
+  return (data as RosterEntry[] | null) ?? []
+}
+
 // aberta = ainda vai acontecer; encerrada = horário já passou
 export function matchPhase(v: MatchView, now: number = Date.now()) {
   if (v.match.status === "cancelada") return "cancelada" as const

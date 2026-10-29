@@ -2,7 +2,10 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Copy, Pencil } from "lucide-react"
 import { createClient } from "@/lib/supabase/server"
-import { getMatchView, matchPhase, type MatchView } from "@/lib/match-view"
+import { getMatchView, getRoster, matchPhase, type MatchView } from "@/lib/match-view"
+import { leaveDeadline } from "@/lib/roster"
+import { Roster } from "@/components/match/roster"
+import { JoinBar } from "@/components/match/join-bar"
 import { matchWhen } from "@/lib/dates"
 import { MatchHeader } from "@/components/match/match-header"
 import { CancelMatch } from "@/components/match/cancel-match"
@@ -29,12 +32,20 @@ export async function generateMetadata({ params }: PageProps<"/pelada/[code]">):
 
 export default async function MatchPage({ params, searchParams }: PageProps<"/pelada/[code]">) {
   const { code } = await params
-  const { criada, salva } = await searchParams
-  const view = await getMatchView(await createClient(), code)
+  const { criada, salva, entrou } = await searchParams
+  const supabase = await createClient()
+  const [view, roster, { data: auth }] = await Promise.all([
+    getMatchView(supabase, code),
+    getRoster(supabase, code),
+    supabase.auth.getUser(),
+  ])
   if (!view) notFound()
   const { match } = view
   const open = matchPhase(view) === "aberta"
   const created = Number(criada)
+  const waitPosition = roster.filter((p) => p.status === "espera").findIndex((p) => p.is_me) + 1 || null
+  const deadline = leaveDeadline(match.starts_at, match.leave_deadline_hours)
+  const justJoined = entrou === "confirmado" || entrou === "espera"
 
   return (
     <>
@@ -61,6 +72,22 @@ export default async function MatchPage({ params, searchParams }: PageProps<"/pe
           </FormAlert>
         </div>
       ) : null}
+
+      {justJoined ? (
+        <div className="mt-6 flex items-center gap-4">
+          <p className="stamp stamp-in text-xl text-stamp">{entrou === "confirmado" ? "Confirmado" : "Na espera"}</p>
+          <p className="text-[0.95rem]">
+            {entrou === "confirmado" ? "Seu nome tá na lista. Bora!" : "Lotou, mas você tá na fila. Abriu vaga, você sobe e recebe aviso."}
+          </p>
+        </div>
+      ) : null}
+
+      <Roster
+        roster={roster}
+        fieldSlots={match.field_slots}
+        goalkeeperSlots={match.goalkeeper_slots}
+        ctx={{ code, isOrganizer: view.is_organizer, justJoined, editable: match.status === "aberta" }}
+      />
 
       {match.rules ? (
         <section className="mt-8">
@@ -94,6 +121,21 @@ export default async function MatchPage({ params, searchParams }: PageProps<"/pe
             ) : null}
           </div>
         </section>
+      ) : null}
+
+      {open ? (
+        <>
+          <div aria-hidden className="h-24" />
+          <JoinBar
+            code={code}
+            loggedIn={!!auth.user}
+            viewer={view.viewer}
+            hasGoalkeeperSlots={match.goalkeeper_slots > 0}
+            full={view.counts.linha >= match.field_slots}
+            waitPosition={waitPosition}
+            deadline={{ label: deadline.label, passed: deadline.passed }}
+          />
+        </>
       ) : null}
     </>
   )
