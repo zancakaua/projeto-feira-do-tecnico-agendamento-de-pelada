@@ -1,0 +1,244 @@
+{
+    "title":  "Escolha o mundo visual do Racha",
+    "question":  "O sorteio escolheu o Volante da Loteca. Fique com ele, pegue uma alternativa ou peça outra rodada.",
+    "options":  [
+                    {
+                        "id":  "assigned",
+                        "kind":  "assigned",
+                        "label":  "Volante da Loteca",
+                        "kicker":  "THE ROLL",
+                        "lineage":  "volantes de loteria esportiva: grade impressa em vermelho, marcação à caneta preta",
+                        "thesis":  "Cada pelada é um volante: as vagas são quadrinhos impressos em vermelho que vão sendo marcados a caneta preta.",
+                        "palette":  [
+                                        "#111111",
+                                        "#C8191F",
+                                        "#F5F5F2",
+                                        "#8A8A85"
+                                    ],
+                        "materials":  [
+                                          "grade impressa em vermelho",
+                                          "marca de caneta preta",
+                                          "papel de volante"
+                                      ],
+                        "viewport":  "Topo preto com a data em numerais condensados enormes; logo abaixo a grade de vagas (linha e goleiro em blocos separados), quadrinhos preenchidos = confirmados, vazios = vagas; botão \u0027Tô dentro\u0027 fixo no polegar.",
+                        "risk":  "Fundo da área de trabalho é claro (papel) por causa do sol na quadra; o preto domina só a moldura.",
+                        "raised":  [
+                                       {
+                                           "from":  "challenger-centre-rail",
+                                           "raise":  "Só três tintas (preto, vermelho, papel) e todo fio a 1px exato, sem sombra nenhuma."
+                                       },
+                                       {
+                                           "from":  "challenger-jcard",
+                                           "raise":  "Toda linha carrega sua contagem alinhada à direita (11/14), como capacidade que não pode estourar."
+                                       },
+                                       {
+                                           "from":  "challenger-orienteering",
+                                           "raise":  "Um único destaque reservado para \u0027você\u0027: seu quadrinho na grade é o único preenchido em vermelho."
+                                       },
+                                       {
+                                           "from":  "challenger-crouwel",
+                                           "raise":  "Todo espaçamento é múltiplo do módulo do quadrinho; a página reflui por células inteiras."
+                                       },
+                                       {
+                                           "from":  "challenger-exposure",
+                                           "raise":  "Lista de espera aparece como quadrinhos hachurados fora da grade: carga visível sem cor extra."
+                                       }
+                                   ],
+                        "html":  ".impeccable/mocks/decision/assigned.html",
+                        "htmlFrame":  "390x844"
+                    },
+                    {
+                        "id":  "model-pick",
+                        "kind":  "pick",
+                        "label":  "Súmula do jogo",
+                        "kicker":  "IMPECCABLE’S PICK",
+                        "lineage":  "súmula de partida: formulário numerado, campos datilografados, carimbo vermelho",
+                        "thesis":  "A pelada como súmula oficial: relação numerada de atletas, campos datilografados e carimbo vermelho de \u0027CONFIRMADO\u0027.",
+                        "palette":  [
+                                        "#141414",
+                                        "#B3161B",
+                                        "#F3F3EF",
+                                        "#6F6F6A"
+                                    ],
+                        "materials":  [
+                                          "formulário pautado",
+                                          "máquina de escrever",
+                                          "carimbo de tinta"
+                                      ],
+                        "viewport":  "Cabeçalho tipo súmula (data, local, horário em campos com rótulo pequeno), relação numerada 1–14 com nomes datilografados e linhas vazias, carimbo vermelho no status.",
+                        "risk":  "É a direção mais óbvia para \u0027lista de jogadores\u0027; pode parecer burocrática se o carimbo virar enfeite.",
+                        "html":  ".impeccable/mocks/decision/model-pick.html",
+                        "htmlFrame":  "390x844"
+                    },
+                    {
+                        "id":  "challenger-warm-app",
+                        "kind":  "challenger",
+                        "catalogId":  "digital-design-canon-warm-consumer-app-surface",
+                        "label":  "App de bolso, vermelho só na ação",
+                        "verdict":  "competitive",
+                        "lineage":  "apps de consumo com cards macios e uma cor de ação",
+                        "thesis":  "Fundo preto aquecido, cards grandes e o vermelho aparece só onde dá para tocar.",
+                        "palette":  [
+                                        "#17130F",
+                                        "#241D18",
+                                        "#E5322B",
+                                        "#F2ECE6"
+                                    ],
+                        "materials":  [
+                                          "cards de cantos macios",
+                                          "barra inferior fixa"
+                                      ],
+                        "viewport":  "Card da pelada ocupando a tela, quando/onde/vagas em texto grande, botão vermelho \u0027Tô dentro\u0027 e barra de abas embaixo.",
+                        "case":  "Funde bem e é muito claro de usar; perde em identidade: poderia ser qualquer app.",
+                        "risk":  "Seguro e familiar; é exatamente a \u0027cara de app\u0027 que o briefing quer evitar.",
+                        "html":  ".impeccable/mocks/decision/challenger-warm-app.html",
+                        "htmlFrame":  "390x844"
+                    },
+                    {
+                        "id":  "challenger-centre-rail",
+                        "kind":  "challenger",
+                        "catalogId":  "rw-centre-rail-reference-setting",
+                        "label":  "Edição com trilho central",
+                        "verdict":  "declined",
+                        "lineage":  "páginas de referência com colunas gêmeas",
+                        "thesis":  "Duas colunas estreitas em volta de um trilho de chaves vermelhas.",
+                        "palette":  [
+                                        "#141210",
+                                        "#C23B22",
+                                        "#EDE6D8"
+                                    ],
+                        "materials":  [
+                                          "fio de 1px",
+                                          "papel osso"
+                                      ],
+                        "viewport":  "Linha e goleiros em colunas gêmeas em volta de um trilho.",
+                        "case":  "Funde mal: ninguém da pelada se reconhece numa edição de livro.",
+                        "kept":  "Disciplina de três tintas e fio de 1px exato.",
+                        "risk":  "Literário demais para quem chega do WhatsApp.",
+                        "hero":  "https://impeccable.style/worlds/cards/rw-centre-rail-reference-setting-hero.webp"
+                    },
+                    {
+                        "id":  "challenger-jcard",
+                        "kind":  "challenger",
+                        "catalogId":  "vernacular-ephemera-cassette-j-card",
+                        "label":  "Capa de fita cassete",
+                        "verdict":  "declined",
+                        "lineage":  "encartes de fita escritos à mão",
+                        "thesis":  "Lado A linha, lado B goleiros, cronometrados à mão.",
+                        "palette":  [
+                                        "#1E3A8A",
+                                        "#FFFFFF",
+                                        "#D22B2B"
+                                    ],
+                        "materials":  [
+                                          "caneta esferográfica",
+                                          "encarte pautado"
+                                      ],
+                        "viewport":  "Encarte dobrado com as duas listas.",
+                        "case":  "Funde mal: nostalgia sem ligação com a quadra.",
+                        "kept":  "Capacidade fixa visível e contagem alinhada à direita.",
+                        "risk":  "Fofo, mas fora do mundo do futebol.",
+                        "hero":  "https://impeccable.style/worlds/cards/vernacular-ephemera-cassette-j-card-hero.webp"
+                    },
+                    {
+                        "id":  "challenger-orienteering",
+                        "kind":  "challenger",
+                        "catalogId":  "notation-diagram-systems-orienteering-map",
+                        "label":  "Mapa de orientação",
+                        "verdict":  "declined",
+                        "lineage":  "mapas de corrida de orientação",
+                        "thesis":  "A pelada como percurso sobre o mapa.",
+                        "palette":  [
+                                        "#FFFFFF",
+                                        "#9B2FAE",
+                                        "#8B5A2B",
+                                        "#F6D44A"
+                                    ],
+                        "materials":  [
+                                          "curvas de nível",
+                                          "tinta de percurso"
+                                      ],
+                        "viewport":  "Mapa com a quadra marcada e percurso.",
+                        "case":  "Funde mal: o mapa não ajuda a ver vagas.",
+                        "kept":  "Uma cor reservada só para a posição de \u0027você\u0027.",
+                        "risk":  "Confunde onde com o quê.",
+                        "hero":  "https://impeccable.style/worlds/cards/notation-diagram-systems-orienteering-map-hero.webp"
+                    },
+                    {
+                        "id":  "challenger-crouwel",
+                        "kind":  "challenger",
+                        "catalogId":  "crouwel-grid-specimen",
+                        "label":  "Grade de Crouwel",
+                        "verdict":  "declined",
+                        "lineage":  "cartazes modulares de Wim Crouwel",
+                        "thesis":  "Letras e vagas construídas na mesma grade visível.",
+                        "palette":  [
+                                        "#FFFFFF",
+                                        "#111111",
+                                        "#E30613"
+                                    ],
+                        "materials":  [
+                                          "grade de construção",
+                                          "letra modular"
+                                      ],
+                        "viewport":  "Data em letras modulares sobre grade aparente.",
+                        "case":  "Funde razoável, mas é cartaz de design, não pelada.",
+                        "kept":  "Espaçamento em módulo de célula, refluxo por células inteiras.",
+                        "risk":  "Vira peça de portfólio.",
+                        "hero":  "https://impeccable.style/worlds/cards/crouwel-grid-specimen-hero.webp"
+                    },
+                    {
+                        "id":  "challenger-exposure",
+                        "kind":  "challenger",
+                        "catalogId":  "operate-b-exposure-record-zone-sheets",
+                        "label":  "Ficha de ampliação",
+                        "verdict":  "declined",
+                        "lineage":  "fichas de laboratório fotográfico",
+                        "thesis":  "Folhas translúcidas sobrepostas com hachuras de carga.",
+                        "palette":  [
+                                        "#1A1A1A",
+                                        "#D9D9D9",
+                                        "#C2187A"
+                                    ],
+                        "materials":  [
+                                          "papel vegetal",
+                                          "hachura"
+                                      ],
+                        "viewport":  "Folhas sobrepostas com a lista hachurada.",
+                        "case":  "Funde mal: laboratório fotográfico não fala com quem joga.",
+                        "kept":  "Hachura como carga: lista de espera sem precisar de cor.",
+                        "risk":  "Técnico e frio.",
+                        "hero":  "https://impeccable.style/worlds/cards/operate-b-exposure-record-zone-sheets-hero.webp"
+                    }
+                ],
+    "reroll":  {
+                   "registers":  [
+                                     "safer",
+                                     "bolder"
+                                 ]
+               },
+    "buildPath":  {
+                      "value":  "code"
+                  },
+    "canon":  true,
+    "canonCard":  {
+                      "kind":  "canon",
+                      "label":  "O padrão da categoria",
+                      "thesis":  "App esportivo escuro com acento vermelho, feito com capricho.",
+                      "palette":  [
+                                      "#0B0B0C",
+                                      "#1A1A1D",
+                                      "#E10600",
+                                      "#FFFFFF"
+                                  ],
+                      "materials":  [
+                                        "cards arredondados",
+                                        "foto de quadra"
+                                    ],
+                      "viewport":  "Foto da quadra no topo, card com data/local/vagas, botão vermelho.",
+                      "risk":  "Indistinguível dos concorrentes, por definição.",
+                      "html":  ".impeccable/mocks/decision/canon.html",
+                      "htmlFrame":  "390x844"
+                  },
+    "steer":  true
+}

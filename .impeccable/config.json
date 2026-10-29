@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "undersized-ui-text",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-10-29T16:56:35.015Z",
+        "reason": "Claude: rascunho descartável da rodada de decisão visual, não é código entregue; o texto pequeno vira barra no esqueleto da página de decisão"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-10-29T16:56:35.085Z",
+        "reason": "Claude: rascunho descartável da rodada de decisão visual, não é código entregue; o texto pequeno vira barra no esqueleto da página de decisão"
+      }
+    ]
+  }
+}

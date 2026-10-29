@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;800&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:390px;height:844px;overflow:hidden;background:#F5F5F2;color:#111;font:15px/1.4 Archivo,sans-serif}
+.top{background:#111;color:#F5F5F2;padding:14px 16px 18px}
+.bar{display:flex;justify-content:space-between;font:700 13px Saira Condensed;letter-spacing:.14em;text-transform:uppercase;color:#bdbdb8}
+.bar b{color:#F5F5F2}
+.when{display:flex;align-items:flex-end;gap:12px;margin-top:14px}
+.day{font:800 92px/0.8 Saira Condensed;letter-spacing:-.02em}
+.when div:last-child{font:700 22px/1.05 Saira Condensed;text-transform:uppercase}
+.when small{display:block;font:500 15px Archivo;color:#bdbdb8;text-transform:none;margin-top:4px}
+.where{margin-top:14px;border-top:1px solid #3a3a38;padding-top:10px;font-size:15px}
+.where b{font-weight:700}
+.sheet{padding:16px}
+.row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #C8191F;padding-bottom:4px;margin-bottom:8px;font:700 15px Saira Condensed;letter-spacing:.12em;text-transform:uppercase;color:#C8191F}
+.row span{font:800 22px Saira Condensed;color:#111;letter-spacing:0}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:0;border-left:1px solid #C8191F;border-top:1px solid #C8191F;margin-bottom:18px}
+.c{height:44px;border-right:1px solid #C8191F;border-bottom:1px solid #C8191F;position:relative;font:700 10px Saira Condensed;color:#C8191F;padding:2px 3px}
+.c.on::after{content:"";position:absolute;inset:9px 8px 6px;background:#111;transform:skew(-8deg)}
+.c.me::after{content:"";position:absolute;inset:9px 8px 6px;background:#C8191F;transform:skew(-8deg)}
+.wait{display:flex;gap:6px;margin:-8px 0 18px}
+.wait i{width:44px;height:30px;border:1px dashed #8A8A85;background:repeating-linear-gradient(135deg,#8A8A85 0 1px,transparent 1px 6px)}
+.wait em{font:500 13px Archivo;color:#55554f;font-style:normal;align-self:center;margin-left:4px}
+.meta{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #111}
+.meta div{padding:10px 0;border-bottom:1px solid #d7d7d2}
+.meta small{display:block;font:700 11px Saira Condensed;letter-spacing:.14em;text-transform:uppercase;color:#6b6b66}
+.meta b{font:700 20px Saira Condensed}
+.cta{position:absolute;left:0;right:0;bottom:0;background:#111;padding:12px 16px 26px;display:flex;gap:10px}
+.cta a{flex:1;background:#C8191F;color:#fff;font:800 22px Saira Condensed;text-transform:uppercase;text-align:center;padding:14px 0;letter-spacing:.04em}
+.cta a.s{flex:0 0 56px;background:transparent;border:1px solid #5a5a57;font-size:13px;padding-top:18px}
+</style></head><body>
+<div class="top">
+ <div class="bar"><b>RACHA</b><span>Volante nº 0412</span></div>
+ <div class="when"><div class="day">31</div><div>Sexta · Out<small>20:00 – 21:30 · society</small></div></div>
+ <div class="where"><b>Arena Granbery</b> · Rua Batista de Oliveira, 1145 · Centro, Juiz de Fora</div>
+</div>
+<div class="sheet">
+ <div class="row">Linha <span>11/14</span></div>
+ <div class="grid">
+  <div class="c on">1</div><div class="c on">2</div><div class="c on">3</div><div class="c on">4</div><div class="c on">5</div><div class="c on">6</div><div class="c on">7</div>
+  <div class="c on">8</div><div class="c on">9</div><div class="c on">10</div><div class="c me">11</div><div class="c">12</div><div class="c">13</div><div class="c">14</div>
+ </div>
+ <div class="row">Goleiro <span>1/2</span></div>
+ <div class="grid" style="grid-template-columns:repeat(7,1fr)">
+  <div class="c on">G1</div><div class="c">G2</div>
+ </div>
+ <div class="row">Espera <span>0</span></div>
+ <div class="wait"><i></i><em>Lotou? Você entra na fila e sobe sozinho.</em></div>
+ <div class="meta">
+  <div><small>Valor</small><b>R$ 20</b></div>
+  <div><small>Nível</small><b>Intermediário</b></div>
+  <div><small>Desistência até</small><b>Sex 14:00</b></div>
+  <div><small>Organiza</small><b>Thiago “Tigrão”</b></div>
+ </div>
+</div>
+<div class="cta"><a class="s">ZAP</a><a>Tô dentro</a></div>
+</body></html>

@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* Súmula: três tintas (preto de formulário, vermelho de carimbo, papel) + cinzas de pauta */
+@theme {
+  --color-ink: #141414;
+  --color-ink-soft: #2a2a28;
+  --color-paper: #f3f3ef;
+  --color-paper-deep: #e7e7e1;
+  --color-stamp: #b3161b;
+  --color-stamp-deep: #8c1015;
+  --color-rule: #c4c4bd;
+  --color-muted: #5b5b56;
+  --color-on-ink-muted: #b9b9b2;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-archivo-narrow), ui-sans-serif, system-ui, sans-serif;
+  --font-typed: var(--font-courier-prime), ui-monospace, monospace;
+
+  --radius-none: 0;
+}
+
+@layer base {
+  html {
+    background: var(--color-ink);
+    color-scheme: light;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: var(--color-stamp);
+    color: #fff;
+  }
+
+  input,
+  textarea,
+  select {
+    caret-color: var(--color-stamp);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-stamp);
+    outline-offset: 2px;
+  }
+
+  a {
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+/* Rótulo de campo da súmula: versalete condensado e espaçado */
+@utility label-caps {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Valor "datilografado" */
+@utility typed {
+  font-family: var(--font-typed);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Carimbo: borda dupla de tinta, leve rotação */
+@utility stamp {
+  display: inline-block;
+  border: 3px solid currentColor;
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+  padding: 0.15rem 0.6rem;
+  font-family: var(--font-label);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: rotate(-6deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes stamp-in {
+    0% {
+      opacity: 0;
+      transform: rotate(-6deg) scale(1.6);
+    }
+    60% {
+      opacity: 1;
+      transform: rotate(-6deg) scale(0.94);
+    }
+    100% {
+      transform: rotate(-6deg) scale(1);
+    }
+  }
+  .stamp-in {
+    animation: stamp-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
