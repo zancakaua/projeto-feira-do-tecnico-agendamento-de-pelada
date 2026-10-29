@@ -5,7 +5,7 @@ const MESSAGES: Record<string, string> = {
   email_not_confirmed: "Confirma seu e-mail pelo link que mandamos antes de entrar.",
   weak_password: "Senha fraca demais. Usa uma mais difícil de adivinhar.",
   over_request_rate_limit: "Muitas tentativas seguidas. Espera um minuto e tenta de novo.",
-  over_email_send_rate_limit: "Muitas tentativas seguidas. Espera um minuto e tenta de novo.",
+  over_email_send_rate_limit: "Nosso envio de e-mails bateu o limite agora. Tenta de novo mais tarde ou entra com o Google.",
   same_password: "A senha nova precisa ser diferente da antiga.",
 }
 
