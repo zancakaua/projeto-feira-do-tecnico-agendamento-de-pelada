@@ -119,7 +119,7 @@ export function JoinBar({
     <div className={`fixed inset-x-0 z-20 border-t-2 border-stamp bg-ink px-4 py-3 md:bottom-0 ${loggedIn ? "bottom-[calc(4rem+env(safe-area-inset-bottom))]" : "bottom-0 pb-[calc(0.75rem+env(safe-area-inset-bottom))]"}`}>
       <div className="mx-auto flex max-w-3xl items-center gap-2">{content}</div>
       {error ? (
-        <p role="alert" className="mx-auto mt-2 max-w-3xl text-sm font-semibold text-[#ff8a83]">
+        <p role="alert" className="mx-auto mt-2 max-w-3xl text-sm font-semibold text-on-ink-alert">
           {error}
         </p>
       ) : null}

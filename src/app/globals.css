@@ -11,6 +11,7 @@
   --color-rule: #c4c4bd;
   --color-muted: #5b5b56;
   --color-on-ink-muted: #b9b9b2;
+  --color-on-ink-alert: #ff8a83; /* erro sobre fundo preto (o vermelho de carimbo não tem contraste ali) */
 
   --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-label: var(--font-archivo-narrow), ui-sans-serif, system-ui, sans-serif;

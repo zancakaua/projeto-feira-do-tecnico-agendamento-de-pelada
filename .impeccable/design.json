@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T00:00:00Z",
+  "title": "Design System: Racha",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Preto de Formulário", "canonical": "#141414", "tonalRamp": ["#141414", "#2a2a28", "#41413e", "#5b5b56", "#7d7d77", "#a3a39c", "#c4c4bd", "#e7e7e1"] },
+      "ink-soft": { "role": "neutral", "displayName": "Preto Gasto", "canonical": "#2a2a28", "tonalRamp": ["#141414", "#2a2a28", "#41413e", "#5b5b56", "#7d7d77", "#a3a39c", "#c4c4bd", "#e7e7e1"] },
+      "stamp": { "role": "primary", "displayName": "Vermelho Carimbo", "canonical": "#b3161b", "tonalRamp": ["#3d0709", "#640b0e", "#8c1015", "#b3161b", "#d2413f", "#e57a73", "#f2b1aa", "#fae2de"] },
+      "stamp-deep": { "role": "primary", "displayName": "Vermelho Carimbo Fundo", "canonical": "#8c1015", "tonalRamp": ["#3d0709", "#640b0e", "#8c1015", "#b3161b", "#d2413f", "#e57a73", "#f2b1aa", "#fae2de"] },
+      "paper": { "role": "neutral", "displayName": "Papel Neutro", "canonical": "#f3f3ef", "tonalRamp": ["#2a2a28", "#5b5b56", "#8a8a84", "#b4b4ad", "#c4c4bd", "#d8d8d1", "#e7e7e1", "#f3f3ef"] },
+      "paper-deep": { "role": "neutral", "displayName": "Papel Marcado", "canonical": "#e7e7e1", "tonalRamp": ["#2a2a28", "#5b5b56", "#8a8a84", "#b4b4ad", "#c4c4bd", "#d8d8d1", "#e7e7e1", "#f3f3ef"] },
+      "rule": { "role": "neutral", "displayName": "Cinza de Pauta", "canonical": "#c4c4bd", "tonalRamp": ["#2a2a28", "#5b5b56", "#8a8a84", "#b4b4ad", "#c4c4bd", "#d8d8d1", "#e7e7e1", "#f3f3ef"] },
+      "muted": { "role": "neutral", "displayName": "Grafite", "canonical": "#5b5b56", "tonalRamp": ["#141414", "#2a2a28", "#41413e", "#5b5b56", "#7d7d77", "#a3a39c", "#c4c4bd", "#e7e7e1"] },
+      "on-ink-muted": { "role": "neutral", "displayName": "Grafite sobre Preto", "canonical": "#b9b9b2", "tonalRamp": ["#41413e", "#5b5b56", "#7d7d77", "#a3a39c", "#b9b9b2", "#c4c4bd", "#e7e7e1", "#f3f3ef"] },
+      "on-stamp": { "role": "neutral", "displayName": "Branco de Carimbo", "canonical": "#ffffff", "tonalRamp": ["#141414", "#41413e", "#7d7d77", "#a3a39c", "#c4c4bd", "#e7e7e1", "#f3f3ef", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Só a manchete da página inicial deslogada; 3rem subindo a 3.75rem em sm+." },
+      "headline": { "displayName": "Headline", "purpose": "Título de página; título da pelada em 2rem." },
+      "title": { "displayName": "Title", "purpose": "Nome da pelada em linhas de lista, times, passos." },
+      "body": { "displayName": "Body", "purpose": "Prosa de apoio em Archivo, números tabulares." },
+      "label": { "displayName": "Label", "purpose": "Rótulo de campo e cabeçalho de seção em versalete condensado, caixa alta." },
+      "typed": { "displayName": "Typed", "purpose": "Valor datilografado: nomes, códigos, preços, chave Pix." },
+      "typed-display": { "displayName": "Typed Display", "purpose": "Data e horário no cabeçalho da súmula." },
+      "button": { "displayName": "Button", "purpose": "Todo botão, caixa alta." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "stamp-in", "value": "380ms cubic-bezier(0.16, 1, 0.3, 1) 700ms both; scale 1.6 → 0.94 → 1 at rotate(-6deg)", "purpose": "O carimbo bate depois de confirmar presença. Só com prefers-reduced-motion: no-preference." },
+      { "name": "type-in", "value": "650ms steps(22, end) both; clip-path inset(0 100% 0 0) → inset(0)", "purpose": "O nome é datilografado na linha da relação ao entrar. Só com prefers-reduced-motion: no-preference." },
+      { "name": "color-state", "value": "transition-colors (150ms)", "purpose": "Hover de botões e linhas: só troca de cor." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão Primário",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Bloco vermelho para a ação principal da tela, como \"Tô dentro\".",
+      "html": "<button class=\"ds-btn-primary\">Tô dentro</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 20px; background: #b3161b; color: #fff; border: 0; border-radius: 0; font-family: 'Archivo Narrow', ui-sans-serif, system-ui, sans-serif; font-size: 1.125rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms; } .ds-btn-primary:hover, .ds-btn-primary:active { background: #8c1015; } .ds-btn-primary:focus-visible { outline: 2px solid #b3161b; outline-offset: 2px; } .ds-btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }"
+    },
+    {
+      "name": "Botão Preto",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Bloco preto para ações do organizador: Editar, Sortear times.",
+      "html": "<button class=\"ds-btn-ink\">Sortear times</button>",
+      "css": ".ds-btn-ink { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 20px; background: #141414; color: #f3f3ef; border: 0; border-radius: 0; font-family: 'Archivo Narrow', ui-sans-serif, system-ui, sans-serif; font-size: 1.125rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms; } .ds-btn-ink:hover { background: #2a2a28; } .ds-btn-ink:focus-visible { outline: 2px solid #b3161b; outline-offset: 2px; }"
+    },
+    {
+      "name": "Botão Contornado",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Fio preto de 1px sobre papel: compartilhar, duplicar.",
+      "html": "<button class=\"ds-btn-outline\">Mandar no grupo do zap</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 20px; background: #f3f3ef; color: #141414; border: 1px solid #141414; border-radius: 0; font-family: 'Archivo Narrow', ui-sans-serif, system-ui, sans-serif; font-size: 1.125rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms; } .ds-btn-outline:hover { background: #e7e7e1; } .ds-btn-outline:focus-visible { outline: 2px solid #b3161b; outline-offset: 2px; }"
+    },
+    {
+      "name": "Campo de Súmula",
+      "kind": "input",
+      "refersTo": "field-cell",
+      "description": "Rótulo em versalete em cima, valor datilografado embaixo; a célula é a borda.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Local</span><input class=\"ds-field-input\" value=\"Arena Vila Madalena\"></label>",
+      "css": ".ds-field { display: block; background: #f3f3ef; border: 1px solid #141414; border-radius: 0; padding: 8px 12px 6px; } .ds-field:focus-within { outline: 2px solid #b3161b; outline-offset: 0; } .ds-field-label { display: block; font-family: 'Archivo Narrow', ui-sans-serif, sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #5b5b56; } .ds-field-input { display: block; width: 100%; background: transparent; border: 0; outline: none; padding: 4px 0; font-family: 'Courier Prime', ui-monospace, monospace; font-weight: 700; font-size: 1.125rem; letter-spacing: -0.01em; color: #141414; caret-color: #b3161b; }"
+    },
+    {
+      "name": "Grupo de Opções",
+      "kind": "chip",
+      "refersTo": "choice-option",
+      "description": "Células de formulário com caixinha; a marcada inverte para preto com × vermelho.",
+      "html": "<div class=\"ds-choices\"><label class=\"ds-choice\"><span class=\"ds-box\"></span>Society</label><label class=\"ds-choice is-checked\"><span class=\"ds-box\">×</span>Futsal</label><label class=\"ds-choice\"><span class=\"ds-box\"></span>Campo</label></div>",
+      "css": ".ds-choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #141414; border: 1px solid #141414; } .ds-choice { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 12px; background: #f3f3ef; color: #141414; font-family: 'Archivo Narrow', ui-sans-serif, sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer; } .ds-choice:hover { background: #e7e7e1; } .ds-choice.is-checked { background: #141414; color: #f3f3ef; } .ds-box { display: grid; place-items: center; width: 16px; height: 16px; border: 1px solid currentColor; font-family: 'Courier Prime', ui-monospace, monospace; font-weight: 700; font-size: 0.8rem; line-height: 1; color: #b3161b; }"
+    },
+    {
+      "name": "Navegação Inferior",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Moldura preta no polegar; aba ativa com filete vermelho de 3px.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-tab is-active\" href=\"#\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\"><rect x=\"8\" y=\"2\" width=\"8\" height=\"4\"/><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"/><path d=\"M12 11h4M12 16h4M8 11h.01M8 16h.01\"/></svg>Peladas</a><a class=\"ds-tab\" href=\"#\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg>Explorar</a></nav>",
+      "css": ".ds-nav { display: grid; grid-template-columns: repeat(2, 1fr); background: #141414; border-top: 1px solid #2a2a28; } .ds-tab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 64px; font-family: 'Archivo Narrow', ui-sans-serif, sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: #b9b9b2; } .ds-tab:hover { color: #f3f3ef; } .ds-tab:focus-visible { outline: 2px solid #b3161b; outline-offset: 2px; } .ds-tab.is-active { color: #f3f3ef; } .ds-tab.is-active::before { content: ''; position: absolute; left: 20px; right: 20px; top: 0; height: 3px; background: #b3161b; }"
+    },
+    {
+      "name": "Carimbo",
+      "kind": "custom",
+      "refersTo": "stamp",
+      "description": "Veredito de status: borda dupla na cor do texto, girado -6°.",
+      "html": "<p class=\"ds-stamp\">3 vagas</p>",
+      "css": ".ds-stamp { display: inline-block; margin: 12px; border: 3px solid currentColor; outline: 1px solid currentColor; outline-offset: 2px; padding: 0.15rem 0.6rem; font-family: 'Archivo Narrow', ui-sans-serif, sans-serif; font-weight: 700; font-size: 1.125rem; letter-spacing: 0.1em; text-transform: uppercase; color: #b3161b; transform: rotate(-6deg); } @media (prefers-reduced-motion: no-preference) { .ds-stamp { animation: ds-stamp-in 380ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both; } @keyframes ds-stamp-in { 0% { opacity: 0; transform: rotate(-6deg) scale(1.6); } 60% { opacity: 1; transform: rotate(-6deg) scale(0.94); } 100% { transform: rotate(-6deg) scale(1); } } }"
+    },
+    {
+      "name": "Relação de Atletas",
+      "kind": "custom",
+      "refersTo": "roster",
+      "description": "Linhas numeradas com nome datilografado; vagas abertas são linhas em branco tracejadas.",
+      "html": "<section class=\"ds-roster\"><h2 class=\"ds-roster-head\">Relação de atletas · linha<span>2/14</span></h2><ol><li class=\"ds-line\"><span class=\"ds-n\">01</span><span class=\"ds-name\">Carlos Eduardo</span></li><li class=\"ds-line is-me\"><span class=\"ds-n\">02</span><span class=\"ds-name\">Matheus Gamonal</span></li><li class=\"ds-line\"><span class=\"ds-n\">03</span><span class=\"ds-blank\"></span></li></ol></section>",
+      "css": ".ds-roster ol { list-style: none; margin: 0; padding: 0; } .ds-roster-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0; padding-bottom: 6px; border-bottom: 2px solid #141414; font-family: 'Archivo Narrow', ui-sans-serif, sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #141414; } .ds-roster-head span { font-family: 'Courier Prime', ui-monospace, monospace; font-size: 1rem; letter-spacing: 0; } .ds-line { display: grid; grid-template-columns: 2.25rem 1fr; align-items: center; padding: 6px 0; border-bottom: 1px solid #c4c4bd; } .ds-line.is-me { background: #e7e7e1; } .ds-line.is-me .ds-name { color: #b3161b; } .ds-n { text-align: center; font-family: 'Archivo Narrow', ui-sans-serif, sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.12em; color: #5b5b56; } .ds-name { font-family: 'Courier Prime', ui-monospace, monospace; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; color: #141414; } .ds-blank { height: 20px; margin-right: 32px; border-bottom: 1px dashed #c4c4bd; } @media (prefers-reduced-motion: no-preference) { .ds-line.is-me .ds-name { animation: ds-type-in 650ms steps(22, end) both; } @keyframes ds-type-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Súmula do Jogo",
+    "overview": "Racha é um documento oficial de várzea, não um app esportivo. Cada tela é uma folha de súmula impressa em três tintas: o preto do formulário, o vermelho do carimbo e o papel neutro. A lista de confirmados é a relação numerada de atletas, as vagas abertas são linhas em branco tracejadas, a lista de espera é a seção \"Reservas\". O organizador confia porque a lista parece papel timbrado; o jogador entende quando, onde e quantas vagas em dois segundos porque o cabeçalho é uma grade de campos.\n\nA densidade é de formulário: células com rótulo pequeno em versalete condensado e valor \"datilografado\" em Courier Prime, separadas por fios de 1px. Nada flutua: não há sombra, gradiente nem canto arredondado. A profundidade vem da moldura preta (topo, barra de ação, navegação) que enquadra o papel, e o vermelho aparece só onde há ação ou veredito: o botão \"Tô dentro\" e o carimbo girado de status.\n\nA rejeição é explícita no PRODUCT.md e confirmada pela construção: nada de card de app esportivo com foto de quadra, barra de progresso, avatar redondo, gradiente roxo/azul, glassmorphism ou sombra exagerada.",
+    "keyCharacteristics": [
+      "Três tintas mais cinzas de pauta; papel neutro, nunca creme.",
+      "Rótulo em versalete condensado em cima, valor datilografado embaixo, a célula é a borda.",
+      "Fios de 1px, cantos retos, zero sombra, zero gradiente.",
+      "Moldura preta no topo e no polegar; vermelho só em ação e carimbo.",
+      "Assinatura: o nome é datilografado na próxima linha em branco e o carimbo bate."
+    ],
+    "rules": [
+      { "name": "The Three Inks Rule", "body": "Toda superfície é feita de preto, vermelho e papel. Cinzas existem só como pauta e texto secundário; não entra quarta cor de marca, e o papel nunca puxa para creme ou bege.", "section": "colors" },
+      { "name": "The Red Means Act Rule", "body": "Vermelho é reservado para a ação principal, o carimbo de status, o \"você\" na lista, foco e erro. Se um elemento vermelho não é nenhum desses, ele está errado.", "section": "colors" },
+      { "name": "The Label Over Value Rule", "body": "Dado do jogo é sempre um par: rótulo em versalete condensado em cima, valor datilografado embaixo. Quem lê escaneia os rótulos e lê os valores.", "section": "typography" },
+      { "name": "The Typewriter Is For Data Rule", "body": "Courier Prime só preenche dados (data, hora, nomes, códigos, valores, contagens). Nunca em títulos, botões ou prosa.", "section": "typography" },
+      { "name": "The Flat Paper Rule", "body": "Papel não tem sombra. Para separar, use fio de 1px, fio duplo de 3px ou inversão para preto.", "section": "elevation" },
+      { "name": "The Square Corner Rule", "body": "Raio é sempre 0. Nada redondo, nem avatar, nem badge de contagem.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do apresentar todo dado do jogo como par rótulo em versalete (0.75rem, 0.12em) sobre valor datilografado em Courier Prime negrito.",
+      "Do separar com fios: 1px preto para células, 1px cinza de pauta entre linhas, 2px preto sob cabeçalho de seção, duplo de 3px sob cabeçalho de ficha.",
+      "Do enquadrar o papel com a moldura preta: topo, navegação e barra de ação fixa no polegar.",
+      "Do reservar o vermelho para ação principal, carimbo, \"você\", foco e erro.",
+      "Do mostrar vagas como linhas em branco numeradas, não como barra de progresso.",
+      "Do manter alvos de toque com no mínimo 44px e botões com 52px."
+    ],
+    "donts": [
+      "Don't arredondar cantos; raio é sempre 0, inclusive em avatar e badge.",
+      "Don't usar sombra ou gradiente em qualquer elemento.",
+      "Don't usar papel creme ou bege; o papel é neutro.",
+      "Don't usar card de app esportivo com foto de quadra, barra de progresso ou avatar redondo.",
+      "Don't usar Courier Prime em título, botão ou prosa.",
+      "Don't introduzir uma quarta cor de marca ou hex solto fora dos tokens."
+    ]
+  }
+}
