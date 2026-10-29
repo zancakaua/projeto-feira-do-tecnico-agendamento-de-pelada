@@ -20,6 +20,42 @@
         ],
         "createdAt": "2026-10-29T16:56:35.085Z",
         "reason": "Claude: rascunho descartável da rodada de decisão visual, não é código entregue; o texto pequeno vira barra no esqueleto da página de decisão"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-10-29T17:48:08.647Z",
+        "reason": "Claude: rascunho descartável da rodada de escolha visual (direções não escolhidas), não é código entregue"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-warm-app.html"
+        ],
+        "createdAt": "2026-10-29T17:48:08.732Z",
+        "reason": "Claude: rascunho descartável da rodada de escolha visual (direções não escolhidas), não é código entregue"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-10-29T17:48:08.812Z",
+        "reason": "Claude: rascunho descartável da rodada de escolha visual (direções não escolhidas), não é código entregue"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-10-29T17:48:08.886Z",
+        "reason": "Claude: rascunho descartável da rodada de escolha visual (direções não escolhidas), não é código entregue"
       }
     ]
   }
