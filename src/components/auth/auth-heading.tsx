@@ -9,13 +9,3 @@ export function AuthHeading({ title, children }: { title: string; children?: Rea
     </div>
   )
 }
-
-export function OrDivider() {
-  return (
-    <div className="my-6 flex items-center gap-3 text-muted" aria-hidden>
-      <span className="h-px flex-1 bg-rule" />
-      <span className="label-caps">ou</span>
-      <span className="h-px flex-1 bg-rule" />
-    </div>
-  )
-}

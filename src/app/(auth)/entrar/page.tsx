@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { redirect } from "next/navigation"
-import { AuthHeading, OrDivider } from "@/components/auth/auth-heading"
-import { GoogleButton } from "@/components/auth/google-button"
+import { AuthHeading } from "@/components/auth/auth-heading"
 import { SignInForm } from "@/components/auth/sign-in-form"
 import { FormAlert } from "@/components/ui/form-alert"
 import { getCurrentUser } from "@/lib/supabase/server"
@@ -12,7 +11,6 @@ export const metadata: Metadata = { title: "Entrar" }
 
 const LINK_ERRORS: Record<string, string> = {
   link: "Esse link expirou ou já foi usado. Pede outro ou entra com a senha.",
-  google: "Não deu pra entrar com o Google agora. Tenta de novo ou usa e-mail e senha.",
 }
 
 export default async function SignInPage({ searchParams }: PageProps<"/entrar">) {
@@ -34,8 +32,6 @@ export default async function SignInPage({ searchParams }: PageProps<"/entrar">)
         </div>
       ) : null}
       <SignInForm volta={returnTo} />
-      <OrDivider />
-      <GoogleButton volta={returnTo} />
       <p className="mt-8 text-[0.95rem]">
         Primeira vez aqui?{" "}
         <Link href={signUpHref} className="font-semibold text-stamp underline">

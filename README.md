@@ -7,7 +7,7 @@ No ar: https://racha-mu.vercel.app
 ## Stack
 
 - Next.js 16 (App Router) + TypeScript + Tailwind CSS 4
-- Supabase: Auth (e-mail/senha e Google), Postgres com RLS em todas as tabelas, Storage (fotos)
+- Supabase: Auth (e-mail e senha), Postgres com RLS em todas as tabelas, Storage (fotos)
 - Zod + React Hook Form, date-fns (pt-BR, fuso `America/Sao_Paulo`)
 - Vitest para as regras puras; testes SQL para as regras do banco
 
@@ -64,8 +64,6 @@ Em **Authentication → URL Configuration**:
 - Site URL: a URL do app (ex.: `https://racha-mu.vercel.app`)
 - Redirect URLs: `http://localhost:3000/**` e `https://SEU-APP.vercel.app/**`
 
-Login com Google: crie um OAuth Client no Google Cloud (tipo Web, redirect `https://SEU-PROJETO.supabase.co/auth/v1/callback`) e cole o Client ID e o Secret em **Authentication → Providers → Google**.
-
 Recomendado: ligar **Leaked password protection** em Authentication → Policies.
 
 ## Deploy na Vercel
@@ -88,7 +86,7 @@ src/
   app/
     (auth)/        entrar, cadastro, recuperar senha, senha nova
     (app)/         explorar, minhas-peladas, avisos, perfil, jogador/[apelido], pelada/...
-    auth/callback  volta do Google e dos links de e-mail
+    auth/callback  volta dos links de e-mail
     icons/[size]   ícones do app (PWA)
   components/      ui (campos, botões), match, explore, profile, shell
   lib/             regras puras (datas, dinheiro, filtros, sorteio, mensagem do zap)

@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { safeReturnPath } from "@/lib/auth-paths"
 
-// Volta do Google, do link de confirmação e do link de recuperar senha
+// Volta do link de confirmação e do link de recuperar senha
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = request.nextUrl
   const code = searchParams.get("code")

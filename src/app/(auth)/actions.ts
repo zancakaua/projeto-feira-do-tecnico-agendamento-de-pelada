@@ -56,16 +56,6 @@ export async function signUpAction(input: SignUpInput): Promise<ActionResult> {
   return { ok: `Mandamos um link pra ${parsed.data.email}. Abre ele pra ativar sua conta.` }
 }
 
-export async function googleAction(volta?: string) {
-  const supabase = await createClient()
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: { redirectTo: callbackUrl(await siteOrigin(), safeReturnPath(volta)) },
-  })
-  if (error || !data.url) redirect("/entrar?erro=google")
-  redirect(data.url)
-}
-
 export async function requestResetAction(input: ResetRequestInput): Promise<ActionResult> {
   const parsed = resetRequestSchema.safeParse(input)
   if (!parsed.success) return { error: parsed.error.issues[0].message }

@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { redirect } from "next/navigation"
-import { AuthHeading, OrDivider } from "@/components/auth/auth-heading"
-import { GoogleButton } from "@/components/auth/google-button"
+import { AuthHeading } from "@/components/auth/auth-heading"
 import { SignUpForm } from "@/components/auth/sign-up-form"
 import { getCurrentUser } from "@/lib/supabase/server"
 
@@ -17,8 +16,6 @@ export default async function SignUpPage({ searchParams }: PageProps<"/cadastro"
     <>
       <AuthHeading title="Criar conta">Um cadastro e você entra em qualquer lista com um toque.</AuthHeading>
       <SignUpForm />
-      <OrDivider />
-      <GoogleButton volta={returnTo} label="Cadastrar com Google" />
       <p className="mt-8 text-[0.95rem]">
         Já tem conta?{" "}
         <Link href={returnTo ? `/entrar?volta=${encodeURIComponent(returnTo)}` : "/entrar"} className="font-semibold text-stamp underline">

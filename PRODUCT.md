@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Next.js (App Router) + TypeScript, Tailwind CSS, Supabase (Auth com e-mail/senha e Google, Postgres com RLS em todas as tabelas, Storage), Zod + React Hook Form, date-fns com locale pt-BR e fuso America/Sao_Paulo. PWA básico (instalável). Deploy na Vercel. Escolhido pelo usuário.
+Next.js (App Router) + TypeScript, Tailwind CSS, Supabase (Auth com e-mail e senha, Postgres com RLS em todas as tabelas, Storage), Zod + React Hook Form, date-fns com locale pt-BR e fuso America/Sao_Paulo. PWA básico (instalável). Deploy na Vercel. Escolhido pelo usuário.
 
 ## Users
 
@@ -34,7 +34,7 @@ Sucesso: o organizador para de editar lista no WhatsApp; o jogador confirma pres
 
 ## Capabilities and Constraints
 
-- Contas (e-mail/senha, Google, recuperação de senha), perfil (nome, apelido, foto, cidade, posição, nível, telefone opcional) e perfil público com histórico.
+- Contas (e-mail e senha, recuperação de senha), perfil (nome, apelido, foto, cidade, posição, nível, telefone opcional) e perfil público com histórico.
 - Criar/editar/cancelar/duplicar pelada; recorrência semanal; vagas de linha e de goleiro separadas; valor por pessoa ou gratuito; chave Pix; nível esperado; regras; pública ou privada (só com link).
 - Explorar com filtros (cidade/bairro, data, tipo de quadra, nível, preço, vaga de goleiro) e busca por texto.
 - Entrar/sair com prazo de desistência configurável; lista de espera automática; organizador marca pagos e remove jogadores; compartilhar no WhatsApp; sorteio de times por nível.
