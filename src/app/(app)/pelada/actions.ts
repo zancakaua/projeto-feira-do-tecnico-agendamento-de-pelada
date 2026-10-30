@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 import { weeklyOccurrences } from "@/lib/schedule"
 import { matchSchema, type MatchData, type MatchFormInput } from "@/lib/validations/match"
 
@@ -39,9 +39,7 @@ function columns(d: MatchData) {
 
 async function requireUser(volta: string) {
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) redirect(`/entrar?volta=${encodeURIComponent(volta)}`)
   return { supabase, user }
 }

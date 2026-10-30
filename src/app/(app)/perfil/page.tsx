@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { redirect } from "next/navigation"
 import { Pencil } from "lucide-react"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 import { signOutAction } from "@/app/(auth)/actions"
 import { getPlayerHistory } from "@/lib/player-history"
 import { PlayerSheet } from "@/components/profile/player-sheet"
@@ -13,9 +13,7 @@ export const metadata: Metadata = { title: "Perfil" }
 export default async function ProfilePage({ searchParams }: PageProps<"/perfil">) {
   const { salvo } = await searchParams
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) redirect("/entrar?volta=/perfil")
   const { data: profile } = await supabase
     .from("profiles")

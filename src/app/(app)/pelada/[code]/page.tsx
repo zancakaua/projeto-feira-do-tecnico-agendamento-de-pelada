@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Copy, Pencil } from "lucide-react"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 import { getMatchView, getRoster, matchPhase, type MatchView } from "@/lib/match-view"
 import { leaveDeadline } from "@/lib/roster"
 import { shareText, whatsappShareUrl } from "@/lib/share"
@@ -39,10 +39,10 @@ export default async function MatchPage({ params, searchParams }: PageProps<"/pe
   const { code } = await params
   const { criada, salva, entrou } = await searchParams
   const supabase = await createClient()
-  const [view, roster, { data: auth }] = await Promise.all([
+  const [view, roster, user] = await Promise.all([
     getMatchView(supabase, code),
     getRoster(supabase, code),
-    supabase.auth.getUser(),
+    getCurrentUser(),
   ])
   if (!view) notFound()
   const { match } = view
@@ -149,7 +149,7 @@ export default async function MatchPage({ params, searchParams }: PageProps<"/pe
           <div aria-hidden className="h-24" />
           <JoinBar
             code={code}
-            loggedIn={!!auth.user}
+            loggedIn={!!user}
             viewer={view.viewer}
             hasGoalkeeperSlots={match.goalkeeper_slots > 0}
             full={view.counts.linha >= match.field_slots}

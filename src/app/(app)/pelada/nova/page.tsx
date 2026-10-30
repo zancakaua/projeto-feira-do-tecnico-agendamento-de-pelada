@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { redirect } from "next/navigation"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 import { MatchForm } from "@/components/match/match-form"
 import { blankDefaults, matchToDefaults } from "@/lib/match-defaults"
 import { getMatchView } from "@/lib/match-view"
@@ -10,9 +10,7 @@ export const metadata: Metadata = { title: "Nova pelada" }
 export default async function NewMatchPage({ searchParams }: PageProps<"/pelada/nova">) {
   const { de } = await searchParams
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) redirect("/entrar?volta=/pelada/nova")
 
   const [{ data: profile }, { data: venues }] = await Promise.all([

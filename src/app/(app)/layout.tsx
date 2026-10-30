@@ -1,13 +1,11 @@
 import Link from "next/link"
 import { Wordmark } from "@/components/shell/wordmark"
 import { BottomNav } from "@/components/shell/bottom-nav"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 
 export default async function AppLayout({ children }: LayoutProps<"/">) {
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
 
   let unread = 0
   if (user) {

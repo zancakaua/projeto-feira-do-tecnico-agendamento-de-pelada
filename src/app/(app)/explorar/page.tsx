@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Search, SlidersHorizontal } from "lucide-react"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 import {
   activeFilterCount,
   filtersToParams,
@@ -36,9 +36,7 @@ function withWhen(f: ExploreFilters, when: When | null, defaultCity: string) {
 export default async function ExplorePage({ searchParams }: PageProps<"/explorar">) {
   const params = await searchParams
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   let defaultCity = DEFAULT_CITY
   if (user) {
     const { data } = await supabase.from("profiles").select("city").eq("id", user.id).single()

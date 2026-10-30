@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { redirect } from "next/navigation"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 import { ProfileForm } from "@/components/profile/profile-form"
 import { AvatarUpload } from "@/components/profile/avatar-upload"
 import { formatPhone } from "@/lib/validations/profile"
@@ -10,9 +10,7 @@ export const metadata: Metadata = { title: "Editar perfil" }
 export default async function EditProfilePage({ searchParams }: PageProps<"/perfil/editar">) {
   const { novo } = await searchParams
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) redirect("/entrar?volta=/perfil/editar")
 
   const [{ data: profile }, { data: priv }] = await Promise.all([

@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 import { profileSchema, type ProfileInput } from "@/lib/validations/profile"
 
 export type ProfileResult = { error?: string; nicknameTaken?: boolean }
@@ -12,9 +12,7 @@ export async function updateProfileAction(input: ProfileInput, novo?: boolean): 
   if (!parsed.success) return { error: parsed.error.issues[0].message }
 
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) redirect("/entrar?volta=/perfil/editar")
 
   const { fullName, nickname, city, position, level, phone } = parsed.data
@@ -38,9 +36,7 @@ export async function updateProfileAction(input: ProfileInput, novo?: boolean): 
 // aqui só gravamos a URL pública, conferindo que o arquivo é dele.
 export async function setAvatarAction(path: string): Promise<ProfileResult> {
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) return { error: "Entra de novo na sua conta." }
   if (!path.startsWith(`${user.id}/`)) return { error: "Foto inválida." }
 

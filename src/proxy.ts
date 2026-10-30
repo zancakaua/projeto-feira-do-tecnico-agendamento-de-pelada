@@ -23,9 +23,9 @@ export async function proxy(request: NextRequest) {
     },
   )
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  // getClaims valida o JWT localmente (chaves ES256), sem ida ao servidor de Auth a cada request
+  const { data } = await supabase.auth.getClaims()
+  const user = data?.claims.sub ? { id: data.claims.sub } : null
 
   if (!user && isProtectedPath(request.nextUrl.pathname)) {
     const url = request.nextUrl.clone()

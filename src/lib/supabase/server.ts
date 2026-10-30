@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr"
+import { cache } from "react"
 import { cookies } from "next/headers"
 import type { Database } from "@/types/database"
 
@@ -25,8 +26,10 @@ export async function createClient() {
   )
 }
 
-export async function getCurrentUser() {
+// Valida o JWT da sessão localmente (chaves ES256 do projeto), sem ida ao servidor de Auth.
+// O cache faz layout e página do mesmo request dividirem a mesma leitura.
+export const getCurrentUser = cache(async () => {
   const supabase = await createClient()
-  const { data } = await supabase.auth.getUser()
-  return data.user
-}
+  const { data } = await supabase.auth.getClaims()
+  return data?.claims.sub ? { id: data.claims.sub } : null
+})

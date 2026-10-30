@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 import { Plus } from "lucide-react"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 import { MatchRow, type MatchRowData, type RowTag } from "@/components/match/match-row"
 import { FormAlert } from "@/components/ui/form-alert"
 import { ButtonLink } from "@/components/ui/button"
@@ -36,9 +36,7 @@ export default async function MyMatchesPage({ searchParams }: PageProps<"/minhas
   const { senha, aba } = await searchParams
   const tab: Tab = TABS.some((t) => t.id === aba) ? (aba as Tab) : "proximas"
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) redirect("/entrar?volta=/minhas-peladas")
 
   const now = new Date().toISOString()

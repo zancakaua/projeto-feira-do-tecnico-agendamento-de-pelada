@@ -4,7 +4,7 @@ import { redirect } from "next/navigation"
 import { formatDistanceToNowStrict } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import { ArrowUpRight, Ban, PencilLine, UserMinus } from "lucide-react"
-import { createClient } from "@/lib/supabase/server"
+import { createClient, getCurrentUser } from "@/lib/supabase/server"
 import { MarkAllRead } from "@/components/notifications/mark-read"
 import type { Enums } from "@/types/database"
 
@@ -19,9 +19,7 @@ const KIND: Record<Enums<"notification_kind">, { label: string; Icon: typeof Ban
 
 export default async function NotificationsPage() {
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) redirect("/entrar?volta=/avisos")
 
   const { data } = await supabase
